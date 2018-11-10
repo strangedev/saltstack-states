@@ -1,5 +1,6 @@
 base:  # 'base' environment
   '*':
     - ssh
-    - vim
+    - editor
     - docker
+    - users
