@@ -6,7 +6,7 @@ docker-repository:
     {% if grains['lsb_distrib_release'] == '18.04'%}
     - name: deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable
     {% elif grains['lsb_distrib_release'] == '16.04' %}
-    - name: deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable
+    - name: deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable
     {% elif grains['lsb_distrib_release'] == '14.04' %}
     - name: deb [arch=amd64] https://download.docker.com/linux/ubuntu trusty stable
     {% endif %}
