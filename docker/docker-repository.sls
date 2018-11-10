@@ -1,3 +1,6 @@
+include:
+  - docker.docker-package
+
 {% if grains['os'] == 'Ubuntu' %}
 docker-repository:
   pkgrepo.managed:
