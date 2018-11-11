@@ -2,6 +2,9 @@ groups:
   sudo:
     - ciordas
     - hummel
+  kubernetes:
+    - ciordas
+    - hummel
   docker:
     - ciordas
     - hummel
