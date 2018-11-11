@@ -1,5 +1,5 @@
 {% for group, users in pillar.get('groups', {}).items() %}
-{{ group }}-exists:
+group-{{ group }}-exists:
   group.present:
     - name: {{ pillar.get('groupnames', {grains['os']: group}).get(grains['os'], group) }}
     - members:
