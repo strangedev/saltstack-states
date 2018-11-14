@@ -1,7 +1,3 @@
-openssh-server:
-  pkg.installed: []
-
-sshd:
-  service.running:
-    - require:
-      - pkg: openssh-server
+include:
+  - ssh.sshd
+  - ssh.ssh-keys
