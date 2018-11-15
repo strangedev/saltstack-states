@@ -4,10 +4,8 @@ base:  # 'base' environment
     - editor
     - users
 
-  'k8s-worker':
-    - docker
-    #- kubernetes-worker
+  'static.213.34.69.159.clients.your-server.de':  # salt master
+    - git-remote
 
-  'k8s-master*':
+  '*34.69.159*':  # test servers
     - docker
-    - kubernetes-master
