@@ -17,3 +17,4 @@ users:
     fullname: Noah Hummel
   wollny:
   biedermann:
+  ahmad:

@@ -4,6 +4,7 @@ base:
     - shell
     - users
     - groupnames
+    - docker
 
   'k8s*':
     - docker
