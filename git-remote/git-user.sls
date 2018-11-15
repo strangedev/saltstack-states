@@ -1,5 +1,5 @@
 git-user-present:
-	user.present:
+  user.present:
     - name: git
 
 {% for user in pillar['git-users'] %}
@@ -8,6 +8,4 @@ salt-admin-{{ user }}:
     - name: {{ user }}.git.id_rsa.pub
     - user: git
     - source: salt://ssh-keys/{{ user }}.id_rsa.pub
-    - require:
-      - user: {{ user }}
 {% endfor %}
