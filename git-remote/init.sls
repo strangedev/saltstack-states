@@ -1,2 +1,2 @@
-inlcude:
+include:
   - git-remote.git-user
