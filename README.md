@@ -9,6 +9,9 @@ Repository of salt states.
 The state files located in the `states` directory are intended for use with a saltstack master.
 Once the salt master is installed on the machine of your choice, the states provided should
 be placed into one of the master's `file_roots` ([saltstack documentation](https://docs.saltstack.com/en/latest/ref/file_server/file_roots.html)).
+
+For more information on a specific state, please consult the README included
+in the state'sdirectory.
  
 ### Setting up the pillars
 
