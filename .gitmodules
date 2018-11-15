@@ -1,0 +1,4 @@
+[submodule "sysadmin-scripts"]
+	path = sysadmin-scripts
+	url = git@github.com:EducationalTechnologies/sysadmin-scripts.git
+	branch = master

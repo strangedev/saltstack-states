@@ -16,5 +16,5 @@ kubernetes-usersetup-{{ user }}:
 
 /usr/local/bin/kubernetes-usersetup.sh:
   file.managed:
-    - source: salt://scripts/kubernetes/usersetup.sh
+    - source: salt://sysadmin-scripts/kubernetes/usersetup.sh
     - mode: 755
