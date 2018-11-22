@@ -12,7 +12,7 @@ A state which ensures users are present and assigned to the correct groups.
 
 ### `users`
 
-Used to configure which users exists and what groups they should be
+Used to configure which users exists, which users should be removed from the system and what groups users should be
 assigned to.
 
 ### `groupnames`
