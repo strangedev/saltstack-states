@@ -1,0 +1,2 @@
+include:
+  - storageos.kernel-modules
