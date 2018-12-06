@@ -1,4 +1,4 @@
-# dipf-devops-saltstack
+# EduTec saltstack-states
 
 Repository of salt states.
 
