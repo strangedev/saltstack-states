@@ -29,14 +29,14 @@ rancher-server-started:
       - systemctl status docker  # fail, if docker is not running
 
 # install pip
-{{ pillar.get('packagenames', {grains['os']: pip}).get(grains['os'], pip) }}:
+{{ pillar['packagenames']['pip'].get(grains['os'], 'pip') }}:
   pkg.installed
 
 docker-python-tools:
   pip.installed:
     - name: docker
     - requires:
-      - pkg: {{ pillar.get('packagenames', {grains['os']: pip}).get(grains['os'], pip) }}
+      - pkg: {{ pillar['packagenames']['pip'].get(grains['os'], 'pip') }}
 
 # this state will not initially launch the rancher server, since it
 # requires rancher-server-started. The rancher-server-started state
