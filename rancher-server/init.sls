@@ -7,10 +7,6 @@
   {% set use_letsencrypt = 'false' %}
 {% endif %}
 
-# needed for require
-include:
-  - docker.docker-service
-
 # since the docker run command used to install the server needs custom
 # command line arguments and the docker_container state does not support
 # this, a shell script is used to bootstrap the server.
@@ -28,7 +24,9 @@ rancher-server-started:
       - /var/lib/rancher/server_container_id
     - requires:
       - {{ pillar['rancher']['volume-name'] }}
-      - service: docker  # fail, if docker is not installed & running
+    - onlyif:
+      - which docker  # fail, if docker is not installed
+      - systemctl status docker  # fail, if docker is not running
 
 # this state will not initially launch the rancher server, since it
 # requires rancher-server-started. The rancher-server-started state
@@ -48,7 +46,9 @@ rancher-server-running:
     - restart_policy: unless-stopped
     - requires:
       - rancher-server-started
-      - service: docker
+    - onlyif:
+      - which docker
+      - systemctl status docker
 
 # create a persistent volume for the rancher server
 {{ pillar['rancher']['volume-name'] }}:
