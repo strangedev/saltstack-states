@@ -20,8 +20,8 @@ rancher-server-started:
       - VERSION: {{ pillar['rancher']['version'] }}
       - USE_LETSENCRYPT: {{ use_letsencrypt }}
       - ACME_DOMAIN: {{ pillar['rancher']['domain-name'] }}
-    - creates:  # if the bootstrap succeeds, a PID file is created.
-      - /var/lib/rancher/server_container_id
+    - creates:  # if the bootstrap succeeds, a lock file is created.
+      - /var/lib/rancher/server-bootstrap.lock
     - requires:
       - {{ pillar['rancher']['volume-name'] }}
     - onlyif:
