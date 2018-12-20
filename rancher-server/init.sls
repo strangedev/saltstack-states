@@ -46,7 +46,7 @@ docker-python-tools:
 # As no further command line arguments are needed to restart the server
 # once the bootstrap has completed, this state is sufficient to 
 # restart the server, should it be down for some reason.
-rancher-server:
+rancher-server-container:
   docker_container.running:
     - image: rancher/rancher:{{ pillar['rancher']['version'] }}
     - port_bindings:
