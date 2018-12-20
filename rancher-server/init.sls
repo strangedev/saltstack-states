@@ -37,6 +37,7 @@ docker-python-tools:
     - name: docker
     - requires:
       - pkg: {{ pillar['packagenames']['pip'].get(grains['os'], 'pip') }}
+    - reload_modules: True
 
 # this state will not initially launch the rancher server, since it
 # requires rancher-server-started. The rancher-server-started state
@@ -45,7 +46,7 @@ docker-python-tools:
 # As no further command line arguments are needed to restart the server
 # once the bootstrap has completed, this state is sufficient to 
 # restart the server, should it be down for some reason.
-rancher-server-running:
+rancher-server:
   docker_container.running:
     - image: rancher/rancher:{{ pillar['rancher']['version'] }}
     - port_bindings:
