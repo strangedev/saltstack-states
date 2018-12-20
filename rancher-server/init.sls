@@ -28,6 +28,10 @@ rancher-server-started:
       - which docker  # fail, if docker is not installed
       - systemctl status docker  # fail, if docker is not running
 
+docker-python-tools:
+  pip.installed:
+    - name: docker
+
 # this state will not initially launch the rancher server, since it
 # requires rancher-server-started. The rancher-server-started state
 # has no way to tell if the rancher server is actually running, thus
@@ -45,6 +49,7 @@ rancher-server-running:
     - detach: True
     - restart_policy: unless-stopped
     - requires:
+      - docker-python-tools
       - rancher-server-started
 
 # create a persistent volume for the rancher server
