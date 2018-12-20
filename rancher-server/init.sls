@@ -46,9 +46,6 @@ rancher-server-running:
     - restart_policy: unless-stopped
     - requires:
       - rancher-server-started
-    - onlyif:
-      - which docker
-      - systemctl status docker
 
 # create a persistent volume for the rancher server
 {{ pillar['rancher']['volume-name'] }}:
