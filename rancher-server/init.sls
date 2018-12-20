@@ -28,7 +28,7 @@ rancher-server-started:
       - /var/lib/rancher/server_container_id
     - requires:
       - {{ pillar['rancher']['volume-name'] }}
-      - docker  # fail, if docker is not installed & running
+      - service: docker  # fail, if docker is not installed & running
 
 # this state will not initially launch the rancher server, since it
 # requires rancher-server-started. The rancher-server-started state
@@ -48,7 +48,7 @@ rancher-server-running:
     - restart_policy: unless-stopped
     - requires:
       - rancher-server-started
-      - docker
+      - service: docker
 
 # create a persistent volume for the rancher server
 {{ pillar['rancher']['volume-name'] }}:
