@@ -52,7 +52,7 @@ rancher-server-container:
     - port_bindings:
       - {{ pillar['rancher']['ports']['http'] }}:80
       - {{ pillar['rancher']['ports']['https'] }}:443
-    - binds: rancher-server-volume:/var/lib/rancher
+    - binds: {{ pillar['rancher']['volume-name'] }}:/var/lib/rancher
     - detach: True
     - restart_policy: unless-stopped
     - requires:
