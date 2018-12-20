@@ -1,5 +1,12 @@
 # https://rancher.com/docs/rancher/v2.x/en/installation/single-node/
 
+# converting YAML bool to bash bool
+{% if pillar['rancher']['use-letsencrypt'] %}
+  {% set use_letsencrypt = 'true' %}
+{% else %}
+  {% set use_letsencrypt = 'false' %}
+{% endif %}
+
 # needed for require
 include:
   - docker.docker-service
@@ -15,7 +22,7 @@ rancher-server-started:
       - HTTPS_PORT: {{ pillar['rancher']['ports']['https'] }}
       - VOLUME_NAME: {{ pillar['rancher']['volume-name'] }}
       - VERSION: {{ pillar['rancher']['version'] }}
-      - USE_LETSENCRYPT: {{ pillar['rancher']['use-letsencrypt'] }}
+      - USE_LETSENCRYPT: {{ use_letsencrypt }}
       - ACME_DOMAIN: {{ pillar['rancher']['domain-name'] }}
     - creates:  # if the bootstrap succeeds, a PID file is created.
       - /var/lib/rancher/server_container_id
