@@ -2,8 +2,9 @@ samba:
   pkg.installed:
     - refresh: True
 
-/etc/samba/smb.conf:
+smb.conf-present:
   file.managed:
+    - name: /etc/samba/smb.conf
     - source: salt://samba/smb.conf
     - require:
       - pkg: samba
@@ -16,7 +17,7 @@ shares-configured:
       - salt://samba/{{ share }}.conf
       {% endfor %}
     - require:
-      - file: /etc/samba/smb.conf
+      - smb.conf-present
 
 /srv/samba:
   file.directory:
