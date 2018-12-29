@@ -12,7 +12,7 @@ shares-configured:
   file.append:
     - name: /etc/samba/smb.conf
     - sources:
-      {% for share in samba-shares %}
+      {% for share in pillar['samba-shares'] %}
       - salt://samba/{{ share }}.conf
       {% endfor %}
     - watch:
