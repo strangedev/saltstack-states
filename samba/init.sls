@@ -3,9 +3,9 @@ samba:
     - refresh: True
 
 /etc/samba/smb.conf:
-  file.copy:
+  file.managed:
     - source: salt://samba/smb.conf
-    - requires:
+    - require:
       - pkg: samba
 
 shares-configured:
@@ -15,7 +15,7 @@ shares-configured:
       {% for share in pillar['samba-shares'] %}
       - salt://samba/{{ share }}.conf
       {% endfor %}
-    - requires:
+    - require:
       - file: /etc/samba/smb.conf
 
 /srv/samba:
@@ -34,5 +34,5 @@ smbd:
     - enable: True
     - watch:
       - file: /etc/samba/smb.conf
-    - requires:
+    - require:
       - file: /srv/samba
