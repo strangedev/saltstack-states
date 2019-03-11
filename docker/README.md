@@ -6,7 +6,8 @@ A state which ensures docker is installed and running.
 
 ## Compatibility
 
-- Ubuntu 14.04-18.04
+- Ubuntu >= 14.04
+- Debian >= 9
 
 ## Pillars
 

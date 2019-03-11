@@ -1,21 +1,14 @@
 include:
   - docker.docker-service
 
-{% if grains['os'] == 'Ubuntu' %}
-
-{% for version in pillar['docker']['blacklist-versions'] %}
-no-docker-{{ version }}:
-  pkg.removed:
-    - name: docker-ce
-    - version: {{ version }}
-    - require_in:
-      - docker-package
-{% endfor %}
+{% if grains['os'] == 'Ubuntu' or grains['os'] == 'Debian' %}
 
 docker-package:
   pkg.installed:
-    - name: docker-ce={{ pillar['docker']['version'] }}
+    - name: docker-ce
     - refresh: True
+    - hold: True
+    - version: {{ pillar['docker']['version'] }}
     - require_in:
       - service: docker
 
