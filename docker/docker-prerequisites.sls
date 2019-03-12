@@ -1,4 +1,4 @@
-{% if len(pillar['docker']['prerequisites']) > 0 %}
+{% if pillar['docker']['prerequisites']|length > 0 %}
 
 include:
  - docker.docker-repository
