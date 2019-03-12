@@ -5,8 +5,8 @@ include:
 kubernetes-repository:
   pkgrepo.managed:
     - humanname: Kubernetes Repository
-    - name: deb https://apt.kubernetes.io/ kubernetes-xenial main
-    - key_url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    - name: {{ pillar["kubernetes"]["repository"]["name"] }}
+    - key_url: {{ pillar["kubernetes"]["repository"]["key_url"] }}
     - require_in:
       - kubernetes-packages
 {% endif %}
