@@ -1,15 +1,15 @@
+{% if len(pillar['docker']['prerequisites']) > 0 %}
+
+include:
+ - docker.docker-repository
+
 docker-prerequisites:
   pkg.installed:
     - pkgs: 
-      {% if grains['os'] == 'Ubuntu' %}
-      - apt-transport-https
-      - ca-certificates
-      - curl
-      - software-properties-common
-      {% elif grains['os'] == 'Debian' %}
-      - apt-transport-https
-      - ca-certificates
-      - curl
-      - software-properties-common
-      - gnupg2
-      {% else %}
+      {% for package_name in pillar['docker']['prerequisites'] %}
+      - {{ package_name }}
+      {% endfor %}
+    - require_in:
+      - docker-repository
+
+{% endif %}

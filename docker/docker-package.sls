@@ -1,15 +1,11 @@
 include:
   - docker.docker-service
 
-{% if grains['os'] == 'Ubuntu' or grains['os'] == 'Debian' %}
-
 docker-package:
   pkg.installed:
-    - name: docker-ce
+    - name: {{ pillar['docker']['package_name'] }}
     - refresh: True
     - hold: True
     - version: {{ pillar['docker']['version'] }}
     - require_in:
       - service: docker
-
-{% endif %}
