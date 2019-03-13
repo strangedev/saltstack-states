@@ -8,7 +8,7 @@ include:
 
 canal-deploy:
   cmd.run:
-    - name: "kubectl appl -f /var/lib/kubernetes-master/canal.yaml"
+    - name: "kubectl apply -f /var/lib/kubernetes-master/canal.yaml"
     - watch:
       - kubeadm-init
     - require:

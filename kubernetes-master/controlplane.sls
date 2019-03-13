@@ -1,5 +1,5 @@
 include:  
-  - kubernetes.packages
+  - kubernetes
 
 /var/lib/kubernetes-master/:
   file.directory:
