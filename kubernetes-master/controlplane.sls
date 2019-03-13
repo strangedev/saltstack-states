@@ -1,5 +1,5 @@
 include:  
-  - kubernetes
+  - kubernetes.packages
 
 /var/lib/kubeadm-init/config.yaml:
   file.managed:
@@ -17,3 +17,4 @@ kubeadm-init:
     - creates: /var/lib/kubelet/config.yaml
     - require:
       - file: /var/lib/kubeadm-init/config.yaml
+      - kubernetes-packages

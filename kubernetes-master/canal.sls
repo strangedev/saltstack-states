@@ -1,6 +1,6 @@
 include:  
-  - kubernetes.controlplane
-  - kubernetes.kubeconfig
+  - kubernetes-master.controlplane
+  - kubernetes-master.kubeconfig
 
 /var/lib/canal-deploy/canal.yaml:
   file.managed:

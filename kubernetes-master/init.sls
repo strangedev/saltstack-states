@@ -1,5 +1,5 @@
 include:
-  - kubernetes.controlplane
-  - kubernetes.kubeconfig
-  - kubernetes.untaint
-  - kubernetes.canal
+  - kubernetes-master.controlplane
+  - kubernetes-master.kubeconfig
+  - kubernetes-master.untaint
+  - kubernetes-master.canal

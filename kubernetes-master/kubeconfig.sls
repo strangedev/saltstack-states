@@ -1,5 +1,5 @@
 include:
-  - kubernetes.controlplane
+  - kubernetes-master.controlplane
 
 /root/.kube:
   file.directory:
@@ -22,5 +22,5 @@ kubeconfig-for-root:
     - name: "chown root:root /root/.kube/config"
     - watch:
       - kubeconfig-copied
-    require:
+    - require:
       - kubeconfig-copied

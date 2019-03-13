@@ -1,6 +1,6 @@
 include:
-  - kubernetes.kubeconfig
-  - kubernetes.controlplane
+  - kubernetes-master.kubeconfig
+  - kubernetes-master.controlplane
 
 "kubectl taint nodes --all node-role.kubernetes.io/master-":
   cmd.run:
