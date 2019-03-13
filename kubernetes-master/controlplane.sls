@@ -1,7 +1,15 @@
 include:  
   - kubernetes.packages
 
-/var/lib/kubeadm-init/config.yaml:
+/var/lib/kubernetes-master/:
+  file.directory:
+    - user: root
+    - group: root
+    - require_in:
+      - file: /var/lib/kubernetes-master/init.yaml
+      - file: /var/lib/kubernetes-master/canal.yaml
+
+/var/lib/kubernetes-master/init.yaml:
   file.managed:
     - source: salt://kubeadm/init.yaml
 
@@ -13,8 +21,8 @@ include:
 
 kubeadm-init:
   cmd.run:
-    - name: "kubeadm init --config /var/lib/kubeadm-init/config.yaml"
+    - name: "kubeadm init --config /var/lib/kubernetes-master/init.yaml"
     - creates: /var/lib/kubelet/config.yaml
     - require:
-      - file: /var/lib/kubeadm-init/config.yaml
+      - file: /var/lib/kubernetes-master/init.yaml
       - kubernetes-packages
