@@ -7,14 +7,14 @@
 ntp:
   pkg.installed:
     - refresh: True
-  servive.running:
-    - enabled: True
+  service.running:
+    - enable: True
     - require:
       - pkg: ntp
 
 "hwclock --systohc":
   cmd.run:
     - require:
-      - servive: ntp
+      - service: ntp
     - watch:
       - service: ntp
