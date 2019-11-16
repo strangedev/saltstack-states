@@ -4,22 +4,23 @@ zsh:
   pkg.installed
 
 {% for user in pillar['users'] %}
-
-'sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"':
+ohmyzsh-{{user}}:
   cmd.run:
+    - name: 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"'
     - creates: '/home/{{user}}/.zshrc'
     - runas: {{user}}
     - require:
       - pkg: curl
       - pkg: zsh
-chsh-zsh:
+chsh-zsh-{{user}}:
   user.present:
     - name: {{user}}
     - shell: /usr/bin/zsh
 {% endfor %}
 
-'sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"':
+ohmyzsh-root:
   cmd.run:
+    - name: 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"'
     - creates: '/root/.zshrc'
     - runas: root
     - require:
