@@ -9,5 +9,8 @@ zsh:
   cmd.run:
     - creates: '/home/{{user}}/.zshrc'
     - runas: {{user}}
+    - require:
+      - pkg: curl
+      - pkg: zsh
 
 {% endfor %}
