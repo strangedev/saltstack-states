@@ -1,4 +1,5 @@
-# EduTec saltstack-states
+# saltstack-states
+_formerly EduTec saltstack-states_
 
 Repository of salt states.
 
