@@ -18,13 +18,14 @@ chsh-zsh:
     - shell: /usr/bin/zsh
 {% endfor %}
 
-cmd.run:
-  - creates: /root/.zshrc
-  - runas: root
-  - require:
-    - pkg: curl
-    - pkg: zsh
-chsh-zsh:
+'sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"':
+  cmd.run:
+    - creates: '/root/.zshrc'
+    - runas: root
+    - require:
+      - pkg: curl
+      - pkg: zsh
+chsh-zsh-root:
   user.present:
     - name: root
     - shell: /usr/bin/zsh
