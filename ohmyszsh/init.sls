@@ -1,5 +1,7 @@
 curl:
   pkg.installed
+zsh:
+  pkg.installed
 
 {% for user in pillar['users'] %}
 
