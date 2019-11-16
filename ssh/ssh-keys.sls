@@ -3,5 +3,5 @@ ssh-access-{{ user }}:
   ssh_auth.present:
     - name: {{ user }}.pub
     - user: {{ user }}
-    - source: salt://ssh-keys/{{ user }}.id_rsa.pub  
+    - source: salt://ssh-keys/{{ user }}.pub
 {% endfor %}
