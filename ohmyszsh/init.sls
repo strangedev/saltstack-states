@@ -12,5 +12,8 @@ zsh:
     - require:
       - pkg: curl
       - pkg: zsh
-
+chsh-zsh:
+  user.present:
+    - name: {{user}}
+    - shell: /usr/bin/zsh
 {% endfor %}
