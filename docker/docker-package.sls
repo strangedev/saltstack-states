@@ -9,3 +9,6 @@ docker-package:
     - version: {{ pillar['docker']['version'] }}
     - require_in:
       - service: docker
+
+docker-compose:
+  pkg.installed
